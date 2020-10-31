@@ -1,13 +1,7 @@
 # PNU_3991_AR
-### مهدیه اسدپور
+### Hossein Rezaei
  
 ---
-- [حساب گیت هاب](https://github.com/mim-asadpour/)
-
-- [رزومه](https://mim-asadpour.github.io/)
-
-- [SOP](https://mim-asadpour.github.io/SOP/)
-
 
 ------------------
 ## Winter Semester Courses 1399/2020
