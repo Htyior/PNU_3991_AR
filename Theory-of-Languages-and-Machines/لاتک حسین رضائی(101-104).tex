@@ -1,0 +1,438 @@
+\documentclass{article}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\linespread{1.35}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\begin{document}
+
+\begin{flushright}
+ \texttt{Finite Automata} \hspace*{0.1cm}\textbf{$|$} \hspace*{0.1cm} \textbf{101}\hspace*{0.1cm}
+\end{flushright}
+\vspace*{1.5cm}
+
+\hspace*{0.5cm} The transitional diagram is\\
+
+\vspace*{0.7cm}
+\begin{center}
+\section{picture}
+\includegraphics[width=10cm,height=3cm]{101-1.png}
+\end{center}
+
+12. Convert the following NFA with $\varepsilon$ move to an equivalent DFA.\\
+
+\vspace*{0.3cm}
+\begin{center}
+\section{picture}
+\includegraphics[width=6cm,height=3cm]{101-2.png}
+\end{center}
+
+\vspace*{0.3cm}
+\textbf{Solution:} In the given automata, there are two $\varepsilon$ moves: from $q_0$ to $q_1$ and from $q_1$ to $q_2$. If we want
+to remove the first $\varepsilon$ move, from $q_0$ to $q_1$, then we have to find all the edges starting from $q_1$.The
+edges are $q_1$ to $q_1$ for input a and $q_1$ to $q_2$ for input $\varepsilon$.\\
+
+\hspace*{0.5cm} Duplicate all these transitions starting from the state $q_0$, keeping the edge label the same. $q_0$ is
+the initial state, and so make $q_1$ also an initial state. $q_1$ is the final state, and so make $q_0$ as the final
+state The modified transitional diagram will be\\
+
+\vspace*{0.3cm}
+\begin{center}
+\section{picture}
+\includegraphics[width=6cm,height=3cm]{101-3.png}
+\end{center}
+
+\vspace*{0.3cm}
+Again, there are two $\varepsilon$ moves, from $q_0$ to $q_2$ and from $q_1$ to $q_2$. If we want to remove the null transition
+from $q_0$ to $q_2$, we have to find all the edges starting from $q_2$.The edges are $q_2$ to $q_0$ for input b.
+Duplicate this transition starting from the state $q_0$, keeping the edge label the same. The modified
+transitional diagram will be as follows. (As in $q_0$ there is a loop with label b, we need not make
+another loop with the same label).\\
+
+\vspace*{0.2cm}
+\begin{center}
+\section{picture}
+\includegraphics[width=6cm,height=3cm]{101-4.png}
+\end{center}
+
+\newpage
+
+\begin{flushleft}
+    \textbf{102}\hspace*{0.1cm} \textbf{$|$} \hspace*{0.1cm} \texttt{Introduction to Automata Theory, Formal Languages and Computation}
+  \end{flushleft}
+  \vspace*{1cm}
+
+  If we want to remove the null transition from $q_1$ to $q_2$, we have to find all the edges starting from
+$q_2$.The edges are $q_2$ to $q_0$ for input b. Duplicate this transition starting from the state $q_1$, keeping
+the edge label the same. $q_1$ is the initial state, and so make $q_2$ also an initial state. The modified
+transitional diagram will be\\
+
+\vspace*{0.3cm}
+\begin{center}
+\section{picture}
+\includegraphics[width=6cm,height=3cm]{102.png}
+\end{center}
+
+\vspace*{0.3cm}
+13. Convert the following Moore machine to an equivalent Mealy machine by the tabular format.\\
+
+\vspace*{0.2cm}
+\begin{center}
+\begin{tabular}{cccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ & \multicolumn{2}{c}{$Next State$}\\
+ \cline{2-3}
+ $State$ &  $I/P=0$ & $I/P=1$  &  $O/P$\\
+\hline
+$\rightarrow q_0$  &    $q_2$   &  $q_1$   &  $0$ \\
+$q_1$              &    $q_0$   &  $q_3$   &  $1$ \\
+$q_2$              &    $q_3$   &  $q_4$   &  $1$ \\
+$q_3$              &    $q_4$   &  $q_1$   &  $0$ \\
+$q_4$              &    $q_4$   &  $q_2$   &  $1$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+\textbf{Solution:} The equivalent Mealy machine is\\
+
+\vspace*{0.2cm}
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_2$  &  $1$  &  $q_1$  & $1$ \\
+$q_1$             &  $q_0$  &  $0$  &  $q_3$  & $0$ \\
+$q_2$             &  $q_3$  &  $0$  &  $q_4$  & $1$ \\
+$q_3$             &  $q_4$  &  $1$  &  $q_1$  & $1$ \\
+$q_4$             &  $q_4$  &  $1$  &  $q_2$  & $1$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+14. Convert the following Moore machine to an equivalent Mealy machine by the tabular format.\\
+
+\vspace*{0.2cm}
+\begin{center}
+\begin{tabular}{cccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ & \multicolumn{2}{c}{$Next State$ }\\
+ \cline{2-3}
+ $State$ &  $I/P=0$ & $I/P=1$  &  $O/P$\\
+\hline
+$\rightarrow q_0$  &    $q_1$   &  $q_3$   &  $1$ \\
+$q_1$              &    $q_0$   &  $q_2$   &  $0$ \\
+$q_2$              &    $q_4$   &  $q_1$   &  $0$ \\
+$q_3$              &    $q_4$   &  $q_3$   &  $1$ \\
+$q_4$              &    $q_3$   &  $q_1$   &  $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{flushright}
+ \texttt{Finite Automata} \hspace*{0.1cm}\textbf{$|$} \hspace*{0.1cm} \textbf{103}\hspace*{0.1cm}
+\end{flushright}
+\vspace*{0.5cm}
+
+\textbf{Solution:} The equivalent Mealy machine is\\
+
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_1$  &  $0$  &  $q_3$  & $1$ \\
+$q_1$             &  $q_0$  &  $1$  &  $q_2$  & $0$ \\
+$q_2$             &  $q_4$  &  $0$  &  $q_1$  & $0$ \\
+$q_3$             &  $q_4$  &  $1$  &  $q_1$  & $1$ \\
+$q_4$             &  $q_3$  &  $1$  &  $q_1$  & $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+15. Convert the following Mealy machine to an equivalent Moore machine by the tabular format.
+
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_1$  &  $1$  &  $q_2$  & $1$ \\
+$q_1$             &  $q_3$  &  $0$  &  $q_0$  & $1$ \\
+$q_2$             &  $q_4$  &  $0$  &  $q_3$  & $1$ \\
+$q_3$             &  $q_1$  &  $0$  &  $q_4$  & $0$ \\
+$q_4$             &  $q_2$  &  $1$  &  $q_4$  & $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+
+\textbf{Solution:} In the next state column of the given Mealy machine, the output differs for $q_1$ and $q_3$ as
+the next states. So, the states will be divided as $q_10$, $q_11$ and $q_30$, $q_31$, respectively. After dividing the
+states, the modified Mealy machine becomes\\
+
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_11$  &  $1$  &  $q_2$  & $1$ \\
+$q_10$             &  $q_30$  &  $0$  &  $q_0$  & $1$ \\
+$q_11$             &  $q_30$  &  $0$  &  $q_0$  & $1$ \\
+$q_2$             &  $q_4$    &  $0$  &  $q_4$  & $1$ \\
+$q_30$            &  $q_10$   &  $0$  &  $q_31$ & $0$ \\
+$q_31$            &  $q_10$   &  $0$  &  $q_4$  & $0$ \\
+$q_4$             &  $q_2$    &  $1$  &  $q_4$  & $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+The converted Moore machine is\\
+
+\vspace*{0.3cm}
+
+\begin{center}
+\begin{tabular}{cccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ & \multicolumn{2}{c}{$Next State$ }\\
+ \cline{2-3}
+ $State$ &  $I/P=0$ & $I/P=1$  &  $O/P$\\
+\hline
+$\rightarrow q_0$   &    $q_11$   &  $q_2$   &  $1$ \\
+$q_10$              &    $q_30$   &  $q_0$   &  $0$ \\
+
+ \hline
+
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{flushleft}
+    \textbf{104}\hspace*{0.1cm} \textbf{$|$} \hspace*{0.1cm} \texttt{Introduction to Automata Theory, Formal Languages and Computation}
+  \end{flushleft}
+  \vspace*{1cm}
+
+  \begin{center}
+\begin{tabular}{cccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ & \multicolumn{2}{c}{$Next State$ }\\
+ \cline{2-3}
+ $State$ &  $I/P=0$ & $I/P=1$  &  $O/P$\\
+\hline
+$q_11$   &    $q_30$   &  $q_0$    &  $1$ \\
+$q_2$    &    $q_4$    &  $q_31$   &  $1$ \\
+$q_30$   &    $q_10$   &  $q_4$    &  $0$ \\
+$q_31$   &    $q_10$   &  $q_4$    &  $1$ \\
+$q_4$    &    $q_2$    &  $q_4$    &  $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+To get rid of the problem of occurrence of a null string, we need to include another state, $q_a$, with
+the same transactions as that of $q_0$ but with output 0.\\
+
+\hspace*{0.5cm} The modified final Moore machine equivalent to the given Mealy machine is\\
+
+  \begin{center}
+\begin{tabular}{cccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ & \multicolumn{2}{c}{$Next State$ }\\
+ \cline{2-3}
+ $State$ &  $I/P=0$ & $I/P=1$  &  $O/P$\\
+\hline
+$q_a$    &    $q_11$   &  $q_2$    &  $0$ \\
+$q_0$    &    $q_11$   &  $q_2$    &  $1$ \\
+$q_10$   &    $q_30$   &  $q_0$    &  $0$ \\
+$q_11$   &    $q_30$   &  $q_0$    &  $1$ \\
+$q_2$    &    $q_4$    &  $q_31$   &  $1$ \\
+$q_30$   &    $q_10$   &  $q_4$    &  $0$ \\
+$q_31$   &    $q_10$   &  $q_4$    &  $1$ \\
+$q_4$    &    $q_2$    &  $q_4$    &  $0$ \\
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+16. Convert the following Mealy machine to an equivalent Moore machine by the tabular format.\\
+
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_0$   &  $1$  &  $q_1$  & $0$ \\
+$q_1$             &  $q_3$    &  $1$  &  $q_3$  & $1$ \\
+$q_2$             &  $q_1$    &  $1$  &  $q_2$  & $1$ \\
+$q_3$             &  $q_2$    &  $0$  &  $q_0$  & $1$ \\
+
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace*{0.3cm}
+
+\textbf{Solutuion:} In the next state column of the given Mealy machine, the output differs for $q_1$ and $q_2$
+as the next states. So, the states will be divided as $q_10$, $q_11$ and $q_20$, $q_21$, respectively. After dividing
+the states, the modified Mealy machine will be\\
+
+\vspace*{0.3cm}
+\begin{center}
+\begin{tabular}{ccccc}
+ \hline
+
+ \hline
+
+ \hline
+
+ \hline
+ &  \multicolumn{2}{c}{$I/P = 0$ } &  \multicolumn{2}{c}{$I/P = 1$}  \\
+  \cline{2-3}                         \cline{4-5}
+ $Present State$ &   $Next State$  & $O/P$ &  $Next State$  & $O/P$\\
+\hline
+$\rightarrow q_0$  &  $q_0$    &  $1$  &  $q_10$  & $0$ \\
+$q_10$             &  $q_3$    &  $1$  &  $q_3$   & $1$ \\
+$q_11$             &  $q_3$    &  $1$  &  $q_3$   & $1$ \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+\end{document} 
+
